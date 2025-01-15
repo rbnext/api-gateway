@@ -1,3 +1,5 @@
+export const preferredRegion = ["arn1"];
+
 export const GET = async () => {
   const ipResponse = await fetch("https://api.ipify.org?format=json", {
     headers: {
