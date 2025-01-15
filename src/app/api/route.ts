@@ -23,6 +23,8 @@ export const GET = async (request: Request) => {
 
     return NextResponse.json({ success: true, data });
   } catch (error) {
+    console.log(error);
+
     return NextResponse.json({ success: false }, { status: 500 });
   }
 };
