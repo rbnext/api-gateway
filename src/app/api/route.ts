@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import UserAgent from "user-agents";
 
 export const POST = async (request: Request) => {
   try {
@@ -9,6 +10,12 @@ export const POST = async (request: Request) => {
     }
 
     const response = await fetch(url, {
+      headers: {
+        "User-Agent": new UserAgent().toString(),
+        Host: "steamcommunity.com",
+        Origin: "https://steamcommunity.com",
+        Referer: "https://steamcommunity.com/",
+      },
       signal: AbortSignal.timeout(3_000),
     });
 
