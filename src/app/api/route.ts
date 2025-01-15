@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server";
 
-export const preferredRegion = ["arn1"];
-
-export const GET = async (request: Request) => {
+export const POST = async (request: Request) => {
   try {
-    const { searchParams } = new URL(request.url);
-    const url = searchParams.get("url");
+    const { url } = await request.json();
 
     if (!url) {
       return NextResponse.json({ status: 400 });
