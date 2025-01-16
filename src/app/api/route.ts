@@ -23,11 +23,6 @@ export const POST = async (request: Request) => {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const res = await fetch("https://api.ipify.org?format=json");
-    const ipData = await res.json();
-
-    console.log(ipData);
-
     const data = await response.json();
 
     return NextResponse.json(data);
