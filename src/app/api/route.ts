@@ -16,7 +16,7 @@ export const POST = async (request: Request) => {
         Origin: "https://steamcommunity.com",
         Referer: "https://steamcommunity.com/",
       },
-      signal: AbortSignal.timeout(3_000),
+      signal: AbortSignal.timeout(5_000),
     });
 
     if (!response.ok) {
