@@ -45,3 +45,51 @@ export type MapSteamMarketRenderResponse = {
   assetId: string
   pattern: null | number
 }
+
+type CSFloatListingItemStickerItem = {
+  name: string
+  reference: {
+    price: number
+  }
+}
+
+type CSFloatListingItemCharmItem = {
+  pattern: number
+  name: string
+  reference: {
+    price: number
+  }
+  stickerId: number
+}
+
+type CSFloatListingItem = {
+  created_at: string
+  id: string
+  price: number
+  item: {
+    market_hash_name: string
+    float_value: number
+    is_stattrak: boolean
+    is_souvenir: boolean
+    is_commodity: boolean
+    stickers?: CSFloatListingItemStickerItem[]
+    keychains?: CSFloatListingItemCharmItem[]
+  }
+  seller: {
+    steam_id: string
+    statistics: {
+      total_trades: number
+    }
+  }
+  reference: {
+    base_price: number
+    last_updated: string
+    predicted_price: number
+    quantity: number
+  }
+  type: 'buy_now'
+}
+
+export type CSFloatListing = {
+  data: CSFloatListingItem[]
+}

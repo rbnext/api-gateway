@@ -1,22 +1,27 @@
-import { NextResponse } from "next/server";
+import { CSFloatListing } from '@/types'
+import { NextResponse } from 'next/server'
 
-export const POST = async () => {
+export const POST = async (request: Request) => {
+  const { session, min_price, max_price, max_float } = await request.json()
+
   const response = await fetch(
-    "https://csfloat.com/api/v1/listings?limit=40&sort_by=most_recent&min_price=1000&max_price=10000&type=buy_now",
+    `https://csfloat.com/api/v1/listings?limit=40&sort_by=most_recent&min_price=${min_price}&max_price=${max_price}&max_float=${max_float}&type=buy_now`,
     {
       headers: {
-        Cookie: `session=${process.env.CSFLOAT_SESSION_TOKEN}`,
+        Cookie: `session=${session}`,
       },
     }
-  );
+  )
 
   if (!response.ok) {
-    const data = await response.json();
+    const errorData = await response.json()
 
-    return NextResponse.json(data, { status: response.status });
+    console.log(errorData)
+
+    return NextResponse.json(errorData, { status: response.status })
   }
 
-  const data = await response.json();
+  const data: CSFloatListing = await response.json()
 
-  return NextResponse.json(data, { status: 200 });
-};
+  return NextResponse.json(data, { status: 200 })
+}
