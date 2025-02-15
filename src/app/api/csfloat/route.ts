@@ -1,5 +1,8 @@
 import { CSFloatListing } from '@/types'
 import { NextResponse } from 'next/server'
+import UserAgent from 'user-agents'
+
+const userAgent = new UserAgent().toString()
 
 export const POST = async (request: Request) => {
   const { session, min_price, max_price, max_float } = await request.json()
@@ -9,6 +12,7 @@ export const POST = async (request: Request) => {
     {
       headers: {
         Cookie: `session=${session}`,
+        'User-Agent': userAgent,
       },
     }
   )
