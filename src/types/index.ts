@@ -42,8 +42,8 @@ export type SteamMarketRender = {
 export type MapSteamMarketRenderResponse = {
   price: number | null
   listingId: string
-  assetId: string
   pattern: null | number
+  inspectUrl: string
 }
 
 type CSFloatListingItemStickerItem = {
