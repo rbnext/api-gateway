@@ -44,6 +44,7 @@ export type MapSteamMarketRenderResponse = {
   listingId: string
   pattern: null | number
   inspectUrl: string
+  stickers: string[]
 }
 
 type CSFloatListingItemStickerItem = {
